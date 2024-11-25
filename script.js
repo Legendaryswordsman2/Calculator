@@ -5,8 +5,14 @@ let accumulator = [];
 let currentNumber = '';
 let result = 0;
 
+const numRegex = /^\d/;
+
+formatter = new Intl.NumberFormat('en-us');
 
 function AddNumber(number) {
+    if (currentNumber.length >= 12)
+        return;
+
     if (number == 0 && currentNumber == '')
         return;
     else if (number === ".") {
@@ -26,7 +32,7 @@ function CalculateAction(action) {
             result = 0;
             break;
         case '+':
-            if(!currentNumber)
+            if (!currentNumber)
                 return;
 
             accumulator.push(currentNumber);
@@ -35,7 +41,7 @@ function CalculateAction(action) {
             break;
 
         case '-':
-            if(!currentNumber)
+            if (!currentNumber)
                 return;
 
             accumulator.push(currentNumber);
@@ -44,7 +50,7 @@ function CalculateAction(action) {
             break;
 
         case 'x':
-            if(!currentNumber)
+            if (!currentNumber)
                 return;
 
             accumulator.push(currentNumber);
@@ -53,9 +59,9 @@ function CalculateAction(action) {
             break;
 
         case '/':
-            if(!currentNumber)
+            if (!currentNumber)
                 return;
-            
+
             accumulator.push(currentNumber);
             accumulator.push('/');
             currentNumber = '';
@@ -68,6 +74,17 @@ function CalculateAction(action) {
 }
 
 function Refresh() {
-    resultText.textContent = currentNumber;
-    accumulatorText.textContent = accumulator.join(' ');
+    resultText.textContent = formatter.format(currentNumber);
+
+    tempText = '';
+    accumulator.forEach(element => {
+        if (numRegex.test(element))
+            tempText += formatter.format(element);
+        else{
+            tempText += " " + element + " ";
+        }
+    });
+
+    accumulatorText.textContent = tempText;
+    console.log(accumulator.join(' '));
 }
