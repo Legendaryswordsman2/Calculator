@@ -41,7 +41,17 @@ button:active{
     /* width: 200px; */
 }
 
-.resultText{
+.accumulatorText{
+    background-color: #a2a6be;
+    color: #c5c5c5;
+    grid-column: span 4;
+    height: 30px;
+    font-size: 30px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.totalText{
     background-color: #a2a6be;
     grid-column: span 4;
     height: 100px;
