@@ -3,14 +3,15 @@ let accumulatorText = document.querySelector(".accumulatorText");
 
 let accumulator = [];
 let currentNumber = '';
-let result = 0;
 
 const numRegex = /^\d/;
 
 formatter = new Intl.NumberFormat('en-us', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 100,
+    maximumFractionDigits: 5,
 });
+
+Refresh();
 
 function AddNumber(number) {
     if (currentNumber.length >= 12)
@@ -33,11 +34,14 @@ function CalculateAction(action) {
         case 'C':
             accumulator = [];
             currentNumber = '';
-            result = 0;
+            break;
+
+        case 'CE':
+            currentNumber = '';
             break;
 
         case '=':
-            if (currentNumber)
+            if (currentNumber && !numRegex.test(accumulator[accumulator.length - 1]))
                 accumulator.push(currentNumber);
             currentNumber = '';
 
@@ -54,6 +58,7 @@ function CalculateAction(action) {
             currentNumber = evaluateExpression(tempText);
             currentNumber = currentNumber.toString();
             break;
+
         case '+':
             if (!currentNumber)
                 return;
@@ -89,6 +94,16 @@ function CalculateAction(action) {
             accumulator.push('/');
             currentNumber = '';
             break;
+
+        case '%':
+            let percentage = 1;
+            if (accumulator[accumulator.length - 2])
+                percentage = accumulator[accumulator.length - 2];
+
+            currentNumber = (currentNumber * percentage) / 100;
+            console.log(currentNumber);
+            currentNumber = currentNumber.toString();
+            break;
         default:
             console.error(`Action (${action}) not recognized!`);
             break;
@@ -119,8 +134,5 @@ function Refresh() {
 function evaluateExpression(expression) {
     // Replace 'x' with '*' for multiplication
     expression = expression.replace(/x/g, '*');
-    // Remove the '=' at the end
-    // expression = expression.replace(/=/g, '');
-    // Evaluate the expression
     return eval(expression);
 }
