@@ -73,7 +73,23 @@ button:active{
     /* grid-template-rows: 100px, 100px 100px 100px; */
     grid-template-columns: 100px 100px 100px 100px;
 
-    justify-content: center;
-
     width: 400px;
+}
+
+.challengeLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+a{
+    color: white;
+    /* display: block; */
+    background-color: #3a3a50;
+    padding: 5px 10px;
+    border-style: solid;
+    border-color: black;
+    font-size: 40px;
+    /* text-align: center; */
 }
