@@ -7,7 +7,10 @@ let result = 0;
 
 const numRegex = /^\d/;
 
-formatter = new Intl.NumberFormat('en-us');
+formatter = new Intl.NumberFormat('en-us', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 100,
+});
 
 function AddNumber(number) {
     if (currentNumber.length >= 12)
@@ -18,6 +21,7 @@ function AddNumber(number) {
     else if (number === ".") {
         if (currentNumber.includes('.') || currentNumber == '')
             return;
+
     }
 
     currentNumber += number;
@@ -74,17 +78,21 @@ function CalculateAction(action) {
 }
 
 function Refresh() {
-    resultText.textContent = formatter.format(currentNumber);
+    if (currentNumber.endsWith('.')) {
+        resultText.textContent = formatter.format(currentNumber) + '.';
+    }
+    else
+        resultText.textContent = formatter.format(currentNumber);
+
 
     tempText = '';
     accumulator.forEach(element => {
         if (numRegex.test(element))
             tempText += formatter.format(element);
-        else{
+        else {
             tempText += " " + element + " ";
         }
     });
 
     accumulatorText.textContent = tempText;
-    console.log(accumulator.join(' '));
 }
