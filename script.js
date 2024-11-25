@@ -35,6 +35,25 @@ function CalculateAction(action) {
             currentNumber = '';
             result = 0;
             break;
+
+        case '=':
+            if (currentNumber)
+                accumulator.push(currentNumber);
+            currentNumber = '';
+
+            tempText = '';
+
+            accumulator.forEach(element => {
+                if (numRegex.test(element))
+                    tempText += formatter.format(element);
+                else {
+                    tempText += " " + element + " ";
+                }
+            });
+
+            currentNumber = evaluateExpression(tempText);
+            currentNumber = currentNumber.toString();
+            break;
         case '+':
             if (!currentNumber)
                 return;
@@ -95,4 +114,13 @@ function Refresh() {
     });
 
     accumulatorText.textContent = tempText;
+}
+
+function evaluateExpression(expression) {
+    // Replace 'x' with '*' for multiplication
+    expression = expression.replace(/x/g, '*');
+    // Remove the '=' at the end
+    // expression = expression.replace(/=/g, '');
+    // Evaluate the expression
+    return eval(expression);
 }
