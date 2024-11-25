@@ -61,14 +61,19 @@ button:active{
     padding-right: 10px;
 }
 
+.calculatorParent{
+    display: flex;
+    justify-content: center;
+
+    /* background-color: #191A1C; */
+}
 
 .calculator{
-    /* display: flex;
-    justify-content: center; */
-
     display: grid;
-    grid-template-rows: 100px, 100px 100px 100px;
+    /* grid-template-rows: 100px, 100px 100px 100px; */
     grid-template-columns: 100px 100px 100px 100px;
 
     justify-content: center;
+
+    width: 400px;
 }

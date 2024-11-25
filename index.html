@@ -12,34 +12,36 @@
 
 <body>
     <h1>Calculator</h1>
-    <div class="calculator">
-        <div class="accumulatorText"></div>
-        <div class="totalText"></div>
-        <button class="specialKey" onclick="CalculateAction('C')">C</button>
-        <button class="specialKey" onclick="CalculateAction('CE')">CE</button>
-        <button class="specialKey" onclick="CalculateAction('%')">%</button>
-        <button class="specialKey" onclick="CalculateAction('/')">/</button>
-        
-        <button class="numberKey" onclick="AddNumber('7')">7</button>
-        <button class="numberKey" onclick="AddNumber('8')">8</button>
-        <button class="numberKey" onclick="AddNumber('9')">9</button>
-        <button class="specialKey" onclick="CalculateAction('x')">x</button>
-        
-        <button class="numberKey" onclick="AddNumber('4')">4</button>
-        <button class="numberKey" onclick="AddNumber('5')">5</button>
-        <button class="numberKey" onclick="AddNumber('6')">6</button>
-        <button class="specialKey" onclick="CalculateAction('-')">-</button>
-        
-        <button class="numberKey" onclick="AddNumber('1')">1</button>
-        <button class="numberKey" onclick="AddNumber('2')">2</button>
-        <button class="numberKey" onclick="AddNumber('3')">3</button>
-        <button class="specialKey" onclick="CalculateAction('+')">+</button>
-        
-        <button class="numberKey zeroKey" onclick="AddNumber('0')">0</button>
-        <button class="numberKey" onclick="AddNumber('.')">.</button>
-        <button class="equalsKey" onclick="CalculateAction('=')">=</button>
+    <div class="calculatorParent">
+        <div class="calculator">
+            <div class="accumulatorText"></div>
+            <div class="totalText"></div>
+            <button class="specialKey" onclick="CalculateAction('C')">C</button>
+            <button class="specialKey" onclick="CalculateAction('CE')">CE</button>
+            <button class="specialKey" onclick="CalculateAction('%')">%</button>
+            <button class="specialKey" onclick="CalculateAction('/')">/</button>
+
+            <button class="numberKey" onclick="AddNumber('7')">7</button>
+            <button class="numberKey" onclick="AddNumber('8')">8</button>
+            <button class="numberKey" onclick="AddNumber('9')">9</button>
+            <button class="specialKey" onclick="CalculateAction('x')">x</button>
+
+            <button class="numberKey" onclick="AddNumber('4')">4</button>
+            <button class="numberKey" onclick="AddNumber('5')">5</button>
+            <button class="numberKey" onclick="AddNumber('6')">6</button>
+            <button class="specialKey" onclick="CalculateAction('-')">-</button>
+
+            <button class="numberKey" onclick="AddNumber('1')">1</button>
+            <button class="numberKey" onclick="AddNumber('2')">2</button>
+            <button class="numberKey" onclick="AddNumber('3')">3</button>
+            <button class="specialKey" onclick="CalculateAction('+')">+</button>
+
+            <button class="numberKey zeroKey" onclick="AddNumber('0')">0</button>
+            <button class="numberKey" onclick="AddNumber('.')">.</button>
+            <button class="equalsKey" onclick="CalculateAction('=')">=</button>
+        </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 
