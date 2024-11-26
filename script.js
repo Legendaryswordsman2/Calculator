@@ -55,7 +55,7 @@ function CalculateAction(action) {
                 }
             });
 
-            currentNumber = evaluateExpression(tempText);
+            currentNumber = evaluateExpression(tempText.replace(',', ''));
             currentNumber = currentNumber.toString();
             break;
 
